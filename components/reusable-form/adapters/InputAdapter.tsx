@@ -12,11 +12,11 @@ export function createInputAdapter<
 >(): FieldComponent<TFieldValues, TName> {
   return ({ control, name, field, label, description, help }) => {
     const type =
-      field.kind === "password"
+      field.type === "password"
         ? "password"
-        : field.kind === "email"
+        : field.type === "email"
         ? "email"
-        : field.kind === "number"
+        : field.type === "number"
         ? "number"
         : "text";
 
@@ -36,20 +36,20 @@ export function createInputAdapter<
                 type={type}
                 placeholder={field.placeholder}
                 inputMode={
-                  field.kind === "text" ||
-                  field.kind === "email" ||
-                  field.kind === "password" ||
-                  field.kind === "number" ||
-                  field.kind === "textarea"
+                  field.type === "text" ||
+                  field.type === "email" ||
+                  field.type === "password" ||
+                  field.type === "number" ||
+                  field.type === "textarea"
                     ? field.inputMode
                     : undefined
                 }
                 autoComplete={
-                  field.kind === "text" ||
-                  field.kind === "email" ||
-                  field.kind === "password" ||
-                  field.kind === "number" ||
-                  field.kind === "textarea"
+                  field.type === "text" ||
+                  field.type === "email" ||
+                  field.type === "password" ||
+                  field.type === "number" ||
+                  field.type === "textarea"
                     ? field.autoComplete
                     : undefined
                 }

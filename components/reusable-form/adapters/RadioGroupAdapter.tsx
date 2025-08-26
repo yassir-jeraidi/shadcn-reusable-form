@@ -17,7 +17,7 @@ export function createRadioGroupAdapter<
         const isRadio = (
             f: FieldConfig<TFieldValues, TName>
         ): f is FieldConfig<TFieldValues, TName> & RadioFieldSpecific =>
-            f.kind === "radio";
+            f.type === "radio";
         const options = isRadio(field) ? field.options : [];
 
         return (

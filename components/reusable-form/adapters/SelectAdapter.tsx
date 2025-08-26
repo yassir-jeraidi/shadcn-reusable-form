@@ -24,7 +24,7 @@ export function createSelectAdapter<
     const isSelect = (
       f: FieldConfig<TFieldValues, TName>
     ): f is FieldConfig<TFieldValues, TName> & SelectFieldSpecific =>
-      f.kind === "select";
+      f.type === "select";
     const options = isSelect(field) ? field.options : [];
 
     return (
