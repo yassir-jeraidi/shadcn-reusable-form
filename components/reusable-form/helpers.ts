@@ -5,6 +5,9 @@ import { createCheckboxAdapter } from "./adapters/CheckboxAdapter"
 import { createTextareaAdapter } from "./adapters/TextareaAdapter"
 import { createRadioGroupAdapter } from "./adapters/RadioGroupAdapter";
 import { createSelectAdapter } from "./adapters/SelectAdapter"
+import {createMultiSelectAdapter} from "@/components/reusable-form/adapters/MultiSelectAdapter";
+import {createAsyncSelectAdapter} from "@/components/reusable-form/adapters/AsyncSelectAdapter";
+import {createArrayAdapter} from "@/components/reusable-form/adapters/ArrayAdapter";
 
 export function helpers<
     TFieldValues extends FieldValues,
@@ -14,10 +17,10 @@ export function helpers<
     components?: FormComponents<TFieldValues>
 ): FieldComponent<TFieldValues, TName> {
     if (field.component) return field.component
-    const override = components?.[field.kind as keyof typeof components]
+    const override = components?.[field.type as keyof typeof components]
     if (override) return override as FieldComponent<TFieldValues, TName>
 
-    switch (field.kind) {
+    switch (field.type) {
         case "text":
         case "email":
         case "password":
@@ -31,6 +34,12 @@ export function helpers<
             return createTextareaAdapter()
         case "select":
             return createSelectAdapter()
+        case "async-select" :
+            return createAsyncSelectAdapter()
+        case "multi-select":
+            return createMultiSelectAdapter()
+        case "array":
+            return createArrayAdapter()
         default:
             return createInputAdapter()
     }

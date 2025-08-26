@@ -32,3 +32,7 @@ export {
 } from "@/components/ui/select"
 
 
+
+export {
+    MultiSelect
+} from "@/components/ui/mutli-select"
